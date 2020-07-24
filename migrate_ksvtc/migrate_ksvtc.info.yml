@@ -1,0 +1,7 @@
+name: Migrate KSVTC
+type: module
+description: Import courses into ksvtc.org
+core: 8.x
+package: Custom by CLock
+dependencies:
+  - migrate_source_csv

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/migrate_ksvtc",
+  "type": "drupal-module",
+  "description": "Import courses into ksvtc.org",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/migrate_ksvtc",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/migrate_ksvtc",
+    "source": "http://cgit.drupalcode.org/migrate_ksvtc"
+  },
+  "require": { }
+}

@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains migrate_ksvtc.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function migrate_ksvtc_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the migrate_ksvtc module.
+    case 'help.page.migrate_ksvtc':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Import courses into ksvtc.org') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function migrate_ksvtc_theme() {
+  return [
+    'migrate_ksvtc' => [
+      'template' => 'migrate_ksvtc',
+      'render element' => 'children',
+    ],
+  ];
+}

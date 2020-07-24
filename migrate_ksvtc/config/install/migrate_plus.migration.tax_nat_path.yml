@@ -1,0 +1,36 @@
+#National Career Cluster
+#National Career Pathway
+id: pathway_n
+label: Migrate national pathways
+migration_group: ksvtc
+
+source:
+  plugin: csv
+  track_changes: true
+  path: public://csv/pathway_n.csv
+  header_row_count: 1
+  keys:
+    - National Career Pathway
+
+
+destination:
+  plugin: entity:taxonomy_term
+
+
+process:
+  name: National Career Pathway
+  vid:
+    plugin: default_value
+    default_value: national_cluster_pathway
+  parent:
+    plugin: migration
+    migration:  cluster_n
+    source: National Career Cluster
+
+migration_dependencies:
+  required:
+    - cluster_n
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc

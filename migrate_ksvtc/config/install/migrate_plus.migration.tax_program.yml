@@ -1,0 +1,27 @@
+id: program
+label: Migrate course programs
+migration_group: ksvtc
+
+source:
+  plugin: csv
+  track_changes: true
+  path: public://csv/course.csv
+  header_row_count: 1
+  keys:
+    - Program
+
+
+destination:
+  plugin: entity:taxonomy_term
+
+
+process:
+  name: Program
+  vid:
+    plugin: default_value
+    default_value: program
+migration_dependencies: {}
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc

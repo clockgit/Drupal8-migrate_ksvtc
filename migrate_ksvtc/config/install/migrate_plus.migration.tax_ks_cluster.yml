@@ -1,0 +1,27 @@
+id: cluster_ks
+label: Migrate career clusters
+migration_group: ksvtc
+
+source:
+  plugin: csv
+  track_changes: true
+  path: public://csv/cluster.csv
+  header_row_count: 1
+  keys:
+    - KS Career Cluster
+
+
+destination:
+  plugin: entity:taxonomy_term
+
+
+process:
+  name: KS Career Cluster
+  vid:
+    plugin: default_value
+    default_value: kansas_cluster_pathway
+migration_dependencies: {}
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc

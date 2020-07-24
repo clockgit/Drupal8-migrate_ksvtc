@@ -1,0 +1,75 @@
+process:
+  uid: constants/uid
+  type:
+    plugin: default_value
+    default_value: institution-group_node-course
+  #label: Course
+  gid:
+    plugin: static_map
+    source: Institution
+    map:
+      Washburn Institute of Technology: 1
+      Wichita Area Technical College: 7
+      Salina Area Technical College: 6
+      Northwest Kansas Technical College: 5
+      North Central Technical College: 4
+      Manhattan Area Technical College: 3
+      FlintHills Technical College: 2
+      Hutchinson Community College: 15
+      Allen Community College: 26
+      Barton Community College: 25
+      Butler Community College: 24
+      Cloud County Community College: 23
+      Coffeville Community College: 22
+      Colby Community College: 21
+      Cowley Community College: 20
+      Dodge City Community College: 19
+      Highland Community College: 18
+      Highland Community College: 17
+      Highland Community College: 16
+      Independence Community College: 14
+      Johnson County Community College: 13
+      Kansas City Community College: 12
+      Labette Community College: 11
+      Neosho County Community College: 10
+      Pratt Community College: 9
+      Seward County Community College: 8
+    defautl_value: 27
+
+  entity_id:
+    plugin: migration
+    migration: course
+    source:
+      - Institution Course Number
+      - Institution
+  #id:
+  #  plugin: default_value
+  #  default_value: 32
+
+langcode: en
+status: true
+id: groupcontent
+label: Add to group
+migration_group: ksvtc
+
+source:
+  constants:
+    uid: 1
+  plugin: csv
+  track_changes: true
+  path: public://csv/course.csv
+  header_row_count: 1
+  keys:
+    - Institution Course Number
+
+destination:
+  plugin: 'entity:group_content'
+
+migration_dependencies:
+  required:
+    - course
+
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc

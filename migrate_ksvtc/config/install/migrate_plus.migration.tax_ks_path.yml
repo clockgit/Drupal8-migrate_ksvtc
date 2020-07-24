@@ -1,0 +1,36 @@
+#National Career Cluster
+#National Career Pathway
+id: pathway_ks
+label: Migrate ks pathways
+migration_group: ksvtc
+
+source:
+  plugin: csv
+  track_changes: true
+  path: public://csv/pathway_ks.csv
+  header_row_count: 1
+  keys:
+    - Kansas Career Pathway
+
+
+destination:
+  plugin: entity:taxonomy_term
+
+
+process:
+  name: Kansas Career Pathway
+  vid:
+    plugin: default_value
+    default_value: kansas_cluster_pathway
+  parent:
+    plugin: migration
+    migration:  cluster_ks
+    source: Kansas Career Cluster
+
+migration_dependencies:
+  required:
+    - cluster_ks
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc

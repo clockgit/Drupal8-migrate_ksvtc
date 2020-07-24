@@ -1,0 +1,62 @@
+id: course
+label: courses
+migration_group: ksvtc
+
+source:
+  plugin: csv
+  track_changes: true
+  path: public://csv/course.csv
+  header_row_count: 1
+  keys:
+    - Institution Course Number
+    - Institution
+
+destination:
+  plugin: entity:node
+process:
+  type:
+    plugin: default_value
+    default_value: course
+  title: Course Title
+  published: Published
+  sticky:
+    plugin: default_value
+    default_value: 0
+  field_course_number: "Institution Course Number"
+  field_credit: "Credit Hours"
+  field_kansas_pathway:
+    plugin: migration
+    migration: pathway_ks
+    source: "KS Career Pathway"
+  field_national_pathway:
+    plugin: migration
+    migration: pathway_n
+    source: "National Career Pathway"
+
+  field_program:
+    plugin: migration
+    migration: program
+    source: Program
+
+
+  field_sb155: SB155
+  field_text_books: "Text books/materials"
+  field_certification_available: "Certification Available"
+  field_fees: Fees
+  'body/value': "Course Description"
+  'body/format':
+    plugin: default_value
+    default_value: full_html
+
+migration_dependencies:
+  required:
+    - cluster_ks
+    - cluster_n
+    - pathway_ks
+    - pathway_n
+    #- program
+
+dependencies:
+  enforced:
+    module:
+      - migrate_ksvtc
